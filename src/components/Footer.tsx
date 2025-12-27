@@ -1,0 +1,109 @@
+import { motion } from "framer-motion";
+import { Phone, Mail, Send, Instagram, MessageCircle, Youtube } from "lucide-react";
+
+const navItems = [
+  { label: "Категории", href: "#categories" },
+  { label: "Услуги", href: "#services" },
+  { label: "Калькулятор", href: "#calculator" },
+  { label: "Преимущества", href: "#features" },
+  { label: "Отзывы", href: "#testimonials" },
+  { label: "Контакты", href: "#contact" },
+];
+
+const socialLinks = [
+  { icon: Send, href: "https://t.me/marksafe_team", label: "Telegram" },
+  { icon: Instagram, href: "https://www.instagram.com/mark_safe", label: "Instagram" },
+  { icon: MessageCircle, href: "https://vk.com/mark_safe", label: "VK" },
+  { icon: Youtube, href: "https://youtube.com/@mark-safe", label: "YouTube" },
+];
+
+const Footer = () => {
+  return (
+    <footer className="relative z-10 border-t border-border/50 bg-white/50 backdrop-blur-sm">
+      <div className="container mx-auto px-4 py-12">
+        <div className="grid md:grid-cols-3 gap-8">
+          {/* Contacts */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <div className="flex items-center gap-2 mb-6">
+              <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center shadow-button">
+                <span className="text-primary-foreground font-bold text-xl">M</span>
+              </div>
+              <span className="font-montserrat font-bold text-xl">Mark Safe</span>
+            </div>
+            <div className="space-y-3">
+              <a
+                href="tel:+79581119404"
+                className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <Phone className="w-5 h-5" />
+                +7 (958) 111-94-04
+              </a>
+              <a
+                href="mailto:marksafe.team@yandex.ru"
+                className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <Mail className="w-5 h-5" />
+                marksafe.team@yandex.ru
+              </a>
+            </div>
+          </motion.div>
+
+          {/* Social Links */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+          >
+            <h4 className="font-bold mb-6">Мы в соцсетях</h4>
+            <div className="flex flex-wrap gap-3">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-12 h-12 rounded-xl bg-muted flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+                  aria-label={social.label}
+                >
+                  <social.icon className="w-5 h-5" />
+                </a>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Navigation */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+          >
+            <h4 className="font-bold mb-6">Навигация</h4>
+            <nav className="grid grid-cols-2 gap-2">
+              {navItems.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  {item.label}
+                </a>
+              ))}
+            </nav>
+          </motion.div>
+        </div>
+
+        <div className="mt-12 pt-6 border-t border-border/50 text-center text-sm text-muted-foreground">
+          <p>© {new Date().getFullYear()} Mark Safe. Все права защищены.</p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
