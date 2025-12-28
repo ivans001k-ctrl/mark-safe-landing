@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
+import logo from "@/assets/logo.png";
 const navItems = [
   { label: "Категории", href: "#categories" },
   { label: "Услуги", href: "#services" },
@@ -38,9 +38,7 @@ const Header = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <a href="#" className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center shadow-button">
-              <span className="text-primary-foreground font-bold text-xl">M</span>
-            </div>
+            <img src={logo} alt="Mark Safe" className="h-10 w-auto" />
             <span className="font-montserrat font-bold text-xl text-foreground">
               Mark Safe
             </span>
