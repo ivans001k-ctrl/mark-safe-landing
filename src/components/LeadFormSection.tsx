@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const LeadFormSection = () => {
   const { toast } = useToast();
@@ -19,16 +20,35 @@ const LeadFormSection = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    try {
+      const { data, error } = await supabase.functions.invoke("send-telegram", {
+        body: {
+          name: formData.name,
+          phone: formData.phone,
+          comment: formData.comment,
+        },
+      });
 
-    toast({
-      title: "Спасибо за заявку!",
-      description: "Мы свяжемся с вами в ближайшее время.",
-    });
+      if (error) {
+        throw error;
+      }
 
-    setFormData({ name: "", phone: "", comment: "" });
-    setIsSubmitting(false);
+      toast({
+        title: "Спасибо за заявку!",
+        description: "Мы свяжемся с вами в ближайшее время.",
+      });
+
+      setFormData({ name: "", phone: "", comment: "" });
+    } catch (error) {
+      console.error("Error sending form:", error);
+      toast({
+        title: "Ошибка",
+        description: "Не удалось отправить заявку. Попробуйте позже.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
