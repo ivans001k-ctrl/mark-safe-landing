@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Phone, Mail, Send, Instagram, MessageCircle, Youtube } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const navItems = [
   { label: "Категории", href: "#categories" },
@@ -28,11 +29,8 @@ const Footer = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <div className="flex items-center gap-2 mb-6">
-              <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center shadow-button">
-                <span className="text-primary-foreground font-bold text-xl">M</span>
-              </div>
-              <span className="font-montserrat font-bold text-xl">Mark Safe</span>
+            <div className="mb-6">
+              <img src={logo} alt="Mark Safe" className="h-14 w-auto" />
             </div>
             <div className="space-y-3">
               <a
