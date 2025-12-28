@@ -37,7 +37,35 @@ const TestimonialsSection = () => {
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        {/* Mobile: Horizontal Scroll */}
+        <div className="lg:hidden flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide px-4 -mx-4 pb-4">
+          {testimonials.map((testimonial, index) => (
+            <motion.div
+              key={testimonial.name}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="glass-card-strong p-6 min-w-[300px] w-[85vw] flex-shrink-0 snap-center"
+            >
+              <div className="flex gap-1 mb-4">
+                {Array.from({ length: testimonial.rating }).map((_, i) => (
+                  <Star key={i} className="w-5 h-5 fill-primary text-primary" />
+                ))}
+              </div>
+              <p className="text-muted-foreground mb-6 leading-relaxed">
+                "{testimonial.text}"
+              </p>
+              <div>
+                <p className="font-bold">{testimonial.name}</p>
+                <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Desktop: Grid */}
+        <div className="hidden lg:grid lg:grid-cols-3 gap-6">
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={testimonial.name}
