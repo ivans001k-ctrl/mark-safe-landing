@@ -123,9 +123,9 @@ const HeroSection = () => {
           delay: 0.2,
           duration: 0.6
         }} className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight mb-6">
-            <span className="text-gradient text-[#511ea4] text-center px-0 mx-0 text-5xl md:text-6xl">Маркировка</span>
+            <span className="text-gradient text-[#511ea4] text-center md:text-6xl px-[11px] mx-[3px] text-4xl">​МАРКИРОВКА</span>
             <br />
-            <span className="text-[#511ea4] text-6xl text-center">Честный Знак</span>
+            <span className="text-[#511ea4] text-center text-5xl">​ЧЕСТНЫЙ ЗНАК   </span>
             <br />
             <span className="text-4xl text-[#0f1729]">под ключ</span>
           </motion.h1>
@@ -152,7 +152,7 @@ const HeroSection = () => {
         }} transition={{
           delay: 0.5,
           duration: 0.6
-        }} className="text-lg md:text-xl mb-10 max-w-2xl mx-auto text-[#0f1729]">
+        }} className="mb-10 max-w-2xl mx-auto text-[#0f1729] md:text-xl text-sm">
             Возьмем на себя все процессы: от выпуска кодов до отчетов в Честный Знак. 
             Полный цикл работ для селлеров и производителей.
           </motion.p>
