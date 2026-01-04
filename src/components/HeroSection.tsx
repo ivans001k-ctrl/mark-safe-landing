@@ -123,9 +123,9 @@ const HeroSection = () => {
           delay: 0.2,
           duration: 0.6
         }} className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight mb-6">
-            <span className="text-gradient text-[#511ea4] text-5xl">Маркировка</span>
+            <span className="text-gradient text-[#511ea4] text-center text-6xl px-0 mx-[2px]">Маркировка</span>
             <br />
-            <span className="text-5xl text-[#511ea4]">Честный Знак</span>
+            <span className="text-[#511ea4] text-6xl text-center">Честный Знак</span>
             <br />
             <span className="text-4xl text-[#0f1729]">под ключ</span>
           </motion.h1>
