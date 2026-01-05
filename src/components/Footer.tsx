@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Phone, Mail, Send, Instagram, MessageCircle, Youtube } from "lucide-react";
+import { Link } from "react-router-dom";
 import logo from "@/assets/logo.png";
 
 const navItems = [
@@ -97,8 +98,14 @@ const Footer = () => {
           </motion.div>
         </div>
 
-        <div className="mt-12 pt-6 border-t border-border/50 text-center text-sm text-muted-foreground">
+        <div className="mt-12 pt-6 border-t border-border/50 text-center text-sm text-muted-foreground space-y-2">
           <p>© {new Date().getFullYear()} Mark Safe. Все права защищены.</p>
+          <Link 
+            to="/privacy" 
+            className="inline-block hover:text-foreground transition-colors underline underline-offset-2"
+          >
+            Политика конфиденциальности
+          </Link>
         </div>
       </div>
     </footer>
