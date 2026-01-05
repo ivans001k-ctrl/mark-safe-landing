@@ -2,19 +2,23 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link, useLocation } from "react-router-dom";
 import logo from "@/assets/logo.png";
+
 const navItems = [
-  { label: "Категории", href: "#categories" },
-  { label: "Услуги", href: "#services" },
-  { label: "Калькулятор", href: "#calculator" },
-  { label: "Преимущества", href: "#features" },
-  { label: "Отзывы", href: "#testimonials" },
-  { label: "Контакты", href: "#contact" },
+  { label: "Категории", anchor: "categories" },
+  { label: "Услуги", anchor: "services" },
+  { label: "Калькулятор", anchor: "calculator" },
+  { label: "Преимущества", anchor: "features" },
+  { label: "Отзывы", anchor: "testimonials" },
+  { label: "Контакты", anchor: "contact" },
 ];
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,6 +27,16 @@ const Header = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleNavClick = (anchor: string) => {
+    if (isHomePage) {
+      const element = document.getElementById(anchor);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+    setIsMobileMenuOpen(false);
+  };
 
   return (
     <motion.header
@@ -37,23 +51,33 @@ const Header = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2">
+          <Link to="/" className="flex items-center gap-2">
             <img src={logo} alt="Mark Safe" className="h-10 w-auto" />
             <span className="font-montserrat font-bold text-xl text-foreground">
               Mark Safe
             </span>
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-8">
             {navItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className="text-muted-foreground hover:text-foreground transition-colors font-medium"
-              >
-                {item.label}
-              </a>
+              isHomePage ? (
+                <button
+                  key={item.label}
+                  onClick={() => handleNavClick(item.anchor)}
+                  className="text-muted-foreground hover:text-foreground transition-colors font-medium"
+                >
+                  {item.label}
+                </button>
+              ) : (
+                <Link
+                  key={item.label}
+                  to={`/#${item.anchor}`}
+                  className="text-muted-foreground hover:text-foreground transition-colors font-medium"
+                >
+                  {item.label}
+                </Link>
+              )
             ))}
           </nav>
 
@@ -91,14 +115,24 @@ const Header = () => {
         >
           <nav className="container mx-auto px-4 py-6 flex flex-col gap-4">
             {navItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className="text-foreground font-medium py-2"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {item.label}
-              </a>
+              isHomePage ? (
+                <button
+                  key={item.label}
+                  onClick={() => handleNavClick(item.anchor)}
+                  className="text-foreground font-medium py-2 text-left"
+                >
+                  {item.label}
+                </button>
+              ) : (
+                <Link
+                  key={item.label}
+                  to={`/#${item.anchor}`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-foreground font-medium py-2"
+                >
+                  {item.label}
+                </Link>
+              )
             ))}
             <Button variant="outline" asChild className="mt-4">
               <a href="tel:+79581119404" className="flex items-center gap-2">
