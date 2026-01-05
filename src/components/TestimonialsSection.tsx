@@ -38,7 +38,7 @@ const TestimonialsSection = () => {
         </motion.div>
 
         {/* Mobile: Horizontal Scroll */}
-        <div className="lg:hidden flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide px-4 -mx-4 pb-4">
+        <div className="lg:hidden flex gap-4 overflow-x-auto overflow-y-hidden snap-x snap-mandatory scrollbar-hide touch-pan-y px-4 -mx-4 pb-4">
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={testimonial.name}
