@@ -100,7 +100,7 @@ const ParallaxBackground = () => {
 
       {/* Small Yellow Blob - Middle */}
       <motion.div
-        className="blob blob-yellow w-[250px] h-[250px] top-2/3 right-1/3 opacity-40"
+        className="blob blob-yellow w-[250px] h-[250px] top-2/3 right-1/3 opacity-10"
         style={{
           x: springX,
           y: springY,

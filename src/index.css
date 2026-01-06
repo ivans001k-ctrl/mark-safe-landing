@@ -85,7 +85,7 @@
   }
 
   .blob {
-    @apply absolute rounded-full blur-3xl opacity-60 pointer-events-none;
+    @apply absolute rounded-full blur-3xl opacity-15 pointer-events-none;
     animation: blob-float 20s ease-in-out infinite;
   }
 
