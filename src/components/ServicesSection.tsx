@@ -42,7 +42,7 @@ const ServicesSection = () => {
         </motion.div>
 
         {/* Mobile: Horizontal Scroll */}
-        <div className="lg:hidden overflow-x-auto overflow-y-hidden touch-pan-y -mx-4 px-4 snap-x snap-mandatory pb-0 mt-0 ml-0 mr-0">
+        <div className="lg:hidden overflow-x-auto overflow-y-hidden overscroll-x-contain -mx-4 px-4 snap-x snap-mandatory pb-0 mt-0 ml-0 mr-0">
           <div className="flex gap-4" style={{
           width: "max-content"
         }}>
