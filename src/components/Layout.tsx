@@ -1,6 +1,7 @@
 import ParallaxBackground from "@/components/ParallaxBackground";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import CookieConsent from "@/components/CookieConsent";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -13,6 +14,7 @@ const Layout = ({ children }: LayoutProps) => {
       <Header />
       <main>{children}</main>
       <Footer />
+      <CookieConsent />
     </div>
   );
 };
