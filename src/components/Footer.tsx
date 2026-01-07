@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Phone, Mail, Send, Instagram, MessageCircle, Youtube } from "lucide-react";
+import { Phone, Mail, Send, MessageCircle, Youtube, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
 import logo from "@/assets/logo.png";
 
@@ -12,11 +12,19 @@ const navItems = [
   { label: "Контакты", href: "#contact" },
 ];
 
+// Custom Dzen icon component
+const DzenIcon = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
+    <path d="M12 0L15 9L24 12L15 15L12 24L9 15L0 12L9 9L12 0Z" />
+  </svg>
+);
+
 const socialLinks = [
   { icon: Send, href: "https://t.me/marksafe_team", label: "Telegram" },
-  { icon: Instagram, href: "https://www.instagram.com/mark_safe", label: "Instagram" },
   { icon: MessageCircle, href: "https://vk.com/mark_safe", label: "VK" },
   { icon: Youtube, href: "https://youtube.com/@mark-safe", label: "YouTube" },
+  { icon: DzenIcon, href: "https://dzen.ru/id/6949091e0c88a5537e346597", label: "Яндекс.Дзен" },
+  { icon: MapPin, href: "https://yandex.com/maps/-/CLXceG35", label: "Яндекс.Карты" },
 ];
 
 const Footer = () => {
