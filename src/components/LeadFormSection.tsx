@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Send, User, Phone, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -8,6 +9,7 @@ import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 
 const LeadFormSection = () => {
+  const navigate = useNavigate();
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: "",
@@ -33,12 +35,8 @@ const LeadFormSection = () => {
         throw error;
       }
 
-      toast({
-        title: "Спасибо за заявку!",
-        description: "Мы свяжемся с вами в ближайшее время.",
-      });
-
       setFormData({ name: "", phone: "", comment: "" });
+      navigate("/success");
     } catch (error) {
       console.error("Error sending form:", error);
       toast({
