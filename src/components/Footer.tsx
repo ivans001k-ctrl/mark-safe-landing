@@ -1,15 +1,15 @@
 import { motion } from "framer-motion";
 import { Phone, Mail, Send, MessageCircle, Youtube, MapPin } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import logo from "@/assets/logo.png";
 
 const navItems = [
-  { label: "Категории", href: "#categories" },
-  { label: "Услуги", href: "#services" },
-  { label: "Калькулятор", href: "#calculator" },
-  { label: "Преимущества", href: "#features" },
-  { label: "Отзывы", href: "#testimonials" },
-  { label: "Контакты", href: "#contact" },
+  { label: "Категории", anchor: "categories" },
+  { label: "Услуги", anchor: "services" },
+  { label: "Калькулятор", anchor: "calculator" },
+  { label: "Преимущества", anchor: "features" },
+  { label: "Отзывы", anchor: "testimonials" },
+  { label: "Контакты", anchor: "contact" },
 ];
 
 // Custom Dzen icon component
@@ -28,6 +28,18 @@ const socialLinks = [
 ];
 
 const Footer = () => {
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
+
+  const handleNavClick = (anchor: string) => {
+    if (isHomePage) {
+      const element = document.getElementById(anchor);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
+
   return (
     <footer className="relative z-10 border-t border-border/50 bg-white/50 backdrop-blur-sm">
       <div className="container mx-auto px-4 py-12">
@@ -38,10 +50,10 @@ const Footer = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <div className="flex items-center gap-2 mb-6">
+            <Link to="/" className="flex items-center gap-2 mb-6">
               <img src={logo} alt="Mark Safe" className="h-10 w-auto" />
               <span className="font-montserrat font-bold text-xl">Mark Safe</span>
-            </div>
+            </Link>
             <div className="space-y-3">
               <a
                 href="tel:+79581119404"
@@ -94,13 +106,23 @@ const Footer = () => {
             <h4 className="font-bold mb-6">Навигация</h4>
             <nav className="grid grid-cols-2 gap-2">
               {navItems.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  className="text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  {item.label}
-                </a>
+                isHomePage ? (
+                  <button
+                    key={item.label}
+                    onClick={() => handleNavClick(item.anchor)}
+                    className="text-muted-foreground hover:text-foreground transition-colors text-left"
+                  >
+                    {item.label}
+                  </button>
+                ) : (
+                  <Link
+                    key={item.label}
+                    to={`/#${item.anchor}`}
+                    className="text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    {item.label}
+                  </Link>
+                )
               ))}
             </nav>
           </motion.div>
