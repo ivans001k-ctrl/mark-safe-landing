@@ -49,6 +49,7 @@ const Success = () => {
                   variant="hero"
                   size="lg"
                   asChild
+                  className="w-full whitespace-normal h-auto py-3 text-sm md:text-base"
                 >
                   <a
                     href="https://vk.com/mark_safe"
