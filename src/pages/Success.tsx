@@ -49,14 +49,16 @@ const Success = () => {
                   variant="hero"
                   size="lg"
                   asChild
-                  className="w-full whitespace-normal h-auto py-3 text-sm md:text-base"
+                  className="w-full h-auto py-4"
                 >
                   <a
                     href="https://vk.com/mark_safe"
                     target="_blank"
                     rel="noopener noreferrer"
+                    className="flex flex-col items-center justify-center gap-1"
                   >
-                    Перейти в сообщество Mark Safe
+                    <span className="text-sm font-normal">Перейти в сообщество</span>
+                    <span className="text-lg font-bold uppercase tracking-wide">Mark Safe</span>
                   </a>
                 </Button>
               </div>
