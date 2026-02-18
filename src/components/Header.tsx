@@ -11,6 +11,7 @@ const navItems = [
   { label: "Калькулятор", anchor: "calculator" },
   { label: "Преимущества", anchor: "features" },
   { label: "Отзывы", anchor: "testimonials" },
+  { label: "Блог", anchor: null, href: "/blog" },
   { label: "Контакты", anchor: "contact" },
 ];
 
@@ -61,10 +62,18 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-8">
             {navItems.map((item) => (
-              isHomePage ? (
+              item.href ? (
+                <Link
+                  key={item.label}
+                  to={item.href}
+                  className="text-muted-foreground hover:text-foreground transition-colors font-medium"
+                >
+                  {item.label}
+                </Link>
+              ) : isHomePage ? (
                 <button
                   key={item.label}
-                  onClick={() => handleNavClick(item.anchor)}
+                  onClick={() => handleNavClick(item.anchor!)}
                   className="text-muted-foreground hover:text-foreground transition-colors font-medium"
                 >
                   {item.label}
@@ -115,10 +124,19 @@ const Header = () => {
         >
           <nav className="container mx-auto px-4 py-6 flex flex-col gap-4">
             {navItems.map((item) => (
-              isHomePage ? (
+              item.href ? (
+                <Link
+                  key={item.label}
+                  to={item.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-foreground font-medium py-2"
+                >
+                  {item.label}
+                </Link>
+              ) : isHomePage ? (
                 <button
                   key={item.label}
-                  onClick={() => handleNavClick(item.anchor)}
+                  onClick={() => handleNavClick(item.anchor!)}
                   className="text-foreground font-medium py-2 text-left"
                 >
                   {item.label}
