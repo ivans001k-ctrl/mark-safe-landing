@@ -9,6 +9,7 @@ const navItems = [
   { label: "Калькулятор", anchor: "calculator" },
   { label: "Преимущества", anchor: "features" },
   { label: "Отзывы", anchor: "testimonials" },
+  { label: "Блог", anchor: null, href: "/blog" },
   { label: "Контакты", anchor: "contact" },
 ];
 
@@ -106,10 +107,18 @@ const Footer = () => {
             <h4 className="font-bold mb-6">Навигация</h4>
             <nav className="grid grid-cols-2 gap-2">
               {navItems.map((item) => (
-                isHomePage ? (
+                item.href ? (
+                  <Link
+                    key={item.label}
+                    to={item.href}
+                    className="text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    {item.label}
+                  </Link>
+                ) : isHomePage ? (
                   <button
                     key={item.label}
-                    onClick={() => handleNavClick(item.anchor)}
+                    onClick={() => handleNavClick(item.anchor!)}
                     className="text-muted-foreground hover:text-foreground transition-colors text-left"
                   >
                     {item.label}
@@ -131,12 +140,6 @@ const Footer = () => {
         <div className="mt-12 pt-6 border-t border-border/50 text-center text-sm text-muted-foreground space-y-2">
           <p>© {new Date().getFullYear()} Mark Safe. Все права защищены.</p>
           <div className="flex items-center justify-center gap-4">
-            <Link 
-              to="/blog" 
-              className="hover:text-foreground transition-colors underline underline-offset-2"
-            >
-              Блог
-            </Link>
             <Link 
               to="/privacy" 
               className="hover:text-foreground transition-colors underline underline-offset-2"
