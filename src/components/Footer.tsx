@@ -130,12 +130,20 @@ const Footer = () => {
 
         <div className="mt-12 pt-6 border-t border-border/50 text-center text-sm text-muted-foreground space-y-2">
           <p>© {new Date().getFullYear()} Mark Safe. Все права защищены.</p>
-          <Link 
-            to="/privacy" 
-            className="inline-block hover:text-foreground transition-colors underline underline-offset-2"
-          >
-            Политика конфиденциальности
-          </Link>
+          <div className="flex items-center justify-center gap-4">
+            <Link 
+              to="/blog" 
+              className="hover:text-foreground transition-colors underline underline-offset-2"
+            >
+              Блог
+            </Link>
+            <Link 
+              to="/privacy" 
+              className="hover:text-foreground transition-colors underline underline-offset-2"
+            >
+              Политика конфиденциальности
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
