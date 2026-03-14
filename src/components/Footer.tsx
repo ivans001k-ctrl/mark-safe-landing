@@ -53,11 +53,16 @@ const Footer = () => {
           >
             <Link to="/" className="flex items-center gap-2 mb-6">
               <img src={logo} alt="Mark Safe" className="h-10 w-auto" />
-              <div className="font-montserrat font-bold flex items-center gap-0">
-                <span className="text-xl">Mark Safe</span>
-                <span className="hidden sm:inline text-xl mx-1.5 font-light opacity-30">|</span>
-                <span className="hidden sm:inline text-[0.85rem] opacity-80">Марк Сейф</span>
-                <span className="sm:hidden block text-[0.65rem] opacity-70 leading-tight -mt-0.5 absolute bottom-[-0.1rem] left-12">Марк Сейф</span>
+              <div className="font-montserrat font-bold">
+                <div className="hidden sm:flex items-center gap-0">
+                  <span className="text-xl">Mark Safe</span>
+                  <span className="text-xl mx-1.5 font-light opacity-30">|</span>
+                  <span className="text-[0.85rem] opacity-80">Марк Сейф</span>
+                </div>
+                <div className="sm:hidden flex flex-col leading-tight">
+                  <span className="text-lg">Mark Safe</span>
+                  <span className="text-[0.6rem] opacity-70 -mt-0.5">Марк Сейф</span>
+                </div>
               </div>
             </Link>
             <div className="space-y-3">
