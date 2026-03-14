@@ -54,9 +54,17 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
             <img src={logo} alt="Mark Safe" className="h-10 w-auto" />
-            <span className="font-montserrat font-bold text-xl text-foreground">
-              Mark Safe
-            </span>
+            <div className="font-montserrat font-bold text-foreground">
+              <div className="hidden sm:flex items-center gap-0">
+                <span className="text-xl">Mark Safe</span>
+                <span className="text-xl mx-1.5 font-light opacity-30">|</span>
+                <span className="text-[0.85rem] opacity-80">Марк Сейф</span>
+              </div>
+              <div className="sm:hidden flex flex-col leading-tight">
+                <span className="text-lg">Mark Safe</span>
+                <span className="text-[0.6rem] opacity-70 -mt-0.5">Марк Сейф</span>
+              </div>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
